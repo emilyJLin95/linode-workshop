@@ -158,17 +158,10 @@ scrren shot of this command output
 ![Add this Linode](/img/system.PNG)
 
 Sweet.
-Now we can go to our website hosted website and see whats up.
-In our address bar lets put the IP address.
-screenshot of the website
-
-Nice! Now lets change it up a bit. 
-Go back into terminal and mess with the html
-The html can be found at 
-<code>/var/www/html/index.nginx-debain.html</code>
+Now let's build a node server!
 
 
-## Setup Nginx & Node
+## Setup Node
 #### Prerequisites
 This part of the tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deployment Disk Size and a 256 MB Swap Disk. Not sure what OS is on your VM? Run `lsb_release -a` to find out!
 
@@ -207,16 +200,10 @@ sudo apt-get install nodejs
 sudo apt-get install build-essential
 ```
 
-#### :rocket: Step 2: Set up nginx (pronounced engine-x)
+#### :rocket: Step 2: Using nginx (pronounced engine-x)
 
 
-:computer: Let's start out by downloading nginx from `apt-get`:
-
-```bash
-sudo apt-get install nginx
-```
-
-:computer: Now we need to modify the default config file. Let's go ahead and get rid of the default one and replace it with our own:
+:computer: We need to modify our default nginx config file. Let's go ahead and get rid of the default one and replace it with our own:
 
 ```bash
 sudo rm /etc/nginx/sites-available/default
