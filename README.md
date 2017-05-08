@@ -25,6 +25,7 @@ Our user can't really do anything because he doesn't have any permissions. Lets 
 We need to make our user a super user. A super user has many of the same priviledges as the root. Lets switch back to root to do this.
 
 su root
+
 usermod -aG sudo <username> 
 
 Alright, now that our user has super user priviledges lets disable people from logging into root.
