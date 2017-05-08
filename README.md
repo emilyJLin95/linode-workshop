@@ -17,7 +17,9 @@ To make sure that our user has been created correclty lets switch into that acco
 su <username> 
 
 Try running the 
+
 ls 
+
 command.
 
 Our user can't really do anything because he doesn't have any permissions. Lets fix that.
@@ -30,11 +32,14 @@ usermod -aG sudo <username>
 
 Alright, now that our user has super user priviledges lets disable people from logging into root.
 Why? Security reasons
+
 A super user can basically do the same thing the root can do.
+
 However, when it comes to attacks, it is easy for attackers to try and login and gain root access because they know the username of root. Its root.
 Furthermore, super users have a greater amount of activity logging than root does. So if someone messes something up on the server using a sudo command, we know. 
 
 vi /etc/ssh/sshd_config
+
 scrrenshot of the file
 
 This is using a text editor called VIM. Its a bit wonky to use. Use the arrow keys to move your cursor to where it says 
@@ -46,10 +51,13 @@ Then hit "esc" and then ":" and finally "x" and enter
 Now that root login is disabled and you're back on the command line hit "control" + "d" to get yourself out of the ssh.
 
 Try 
+
 ssh root@<your IP address> 
 
 You should not be able to login now.
+
 Lets login with your created account now.
+
 ssh <username>@<Your IP address> 
 
 
@@ -60,12 +68,14 @@ Ngninx is a webserver that will allow people to enter your IP address in their a
 We're going to be using the apt package manager for this. apt is a package manager, much like how we use npm to manage our packages. 
 
 sudo apt-get update
+
 sudo apt-get install nginx
 
 Ngninx comes with a firewall. We need to reconfigure this to allow us to handle requests. 
 Upon installation, Nginx is really kind and configures itself with the firewall "ufw." This means that all we have to do is specify what we want to give Nginx access to. 
 
 Lets list all the possible applications our firewall can work with 
+
 sudo ufw app list
 
 screen shot of this command being run
