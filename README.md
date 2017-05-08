@@ -260,12 +260,12 @@ screen
 npm start
 ```
 
-If you now navigate to your Linode instance's IP address, you should see your Node app being hosted! If you feel particularly like a n00b, you can always go to the Linode dashboard to get your IP address. Otherwise, you can bash it up with: 
+If you now navigate to your Linode instance's IP address, you should see your Node app being hosted! You can always go to the Linode dashboard to get your IP address, but you can also just bash it up with: 
 
 `ip route get 8.8.4.4 | awk '{print $NF; exit}'`  
 
 
-Share your link with friends and now you have a chat service!
+If you put this address in your browser, you should find the Socket.io chat app running. Share your link with friends - you have a chat service!
 <br>
 <br>
 ![Final product!](/img/final.PNG)
