@@ -162,6 +162,13 @@ systemctl status nginx
 
 ![Add this Linode](/img/system.PNG)
 
+You can now copoy and paste your ip address into the address bar of your browser and see your hosted site!
+
+To edit the HMTL of the site you can use the command and flex some VIM muscle. 
+
+```
+sudo vi /var/www/html/index.nginx-debian.html
+```
 Sweet.
 Now let's build a node server!
 
