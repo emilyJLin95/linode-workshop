@@ -20,9 +20,9 @@ Be sure to look out for the following notations:
 ![Add this Linode](/img/4.png)
 4. You will arrive at this page
 ![Add this Linode](/img/5.png)
-5. Choose "Rebuild" above and "Ubuntu 16.04 LTS" under Image section, then hit "Rebuild"
+5. Choose "Rebuild" above. This takes us to the page where we select our “Image“, which is our OS. For this workshop, we’ll use the Debian-based Ubuntu OS. Go ahead and choose “Ubuntu 16.04 LTS" under Image section, then hit "Rebuild”. 
 ![Add this Linode](/img/6.png)
-6. You will see this page:
+6. You will see this page. Navigate to the `Boot` button to initiate the boot process. You should see your `Server Status` change from `Powered off` to `Running` once the boot process is complete. 
 ![Add this Linode](/img/7.png)
 7. Choose "Remote Access" in the selection bar above, and you will see this page
 ![Add this Linode](/img/8.png)
@@ -83,11 +83,14 @@ vi /etc/ssh/sshd_config
 scrrenshot of the file
 ![Add this Linode](/img/config1.png)
 
-This is using a text editor called VIM. Its a bit wonky to use. Use the arrow keys to move your cursor to where it says 
-"#Authentication" 
-and find the line that says "PermitRootLogin"
-Hit "i" on your keyboard to enter "insert mode" and change "yes" to "no"
-Then hit "esc" and then ":" and finally "x" and enter
+We’re going to use vim. It’s supremely better than emacs. Let’s find the #Authentication section, to do this:
+
+- Type `/` (which triggers a regex search sequence) and type `Authentication`. Watch your cursor jump and revel in the fact that you’re a pro-vim user now. Well, almost. 
+
+- Arrow-key down to `PermitRootLogin` and let’s change the `yes` to `no`. Wait, how do you modify text!? Type `i` to go into `INSERT` mode. Now you can edit text. Go ahead and delete `yes` and replace it with `no`. 
+
+- Once you’re done, save it and lets move on! Don’t know how to save?? Find out [here](https://www.google.com/search?q=how+do+I+save+things+in+vim%3F!%3F&oq=how+do+I+save+things+in+vim%3F!%3F&aqs=chrome..69i57.4592j0j1&sourceid=chrome&ie=UTF-8)
+
 
 Now that root login is disabled and you're back on the command line hit "control" + "d" to get yourself out of the ssh.
 
@@ -257,7 +260,7 @@ This couldn't be easier.
 :computer: We need to install git and GNU Screen. You should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
 
 ```bash
-apt install git
+sudo apt install git
 sudo apt-get install screen
 ```
 :computer: Then we clone the repo (this repo is an example app from our good friends at [Socket.IO!](https://github.com/socketio/socket.io/tree/master/examples/chat))
@@ -274,5 +277,12 @@ screen
 npm start
 ```
 
-If you now navigate to your Linode instance's IP address, you should see your Node app being hosted! Share your link with friends and now you have a chat service!
+If you now navigate to your Linode instance's IP address, you should see your Node app being hosted! If you feel particularly like a n00b, you can always go to the Linode dashboard to get your IP address. Otherwise, you can bash it up with: 
+
+`ip route get 8.8.4.4 | awk '{print $NF; exit}'`  
+
+
+Share your link with friends and now you have a chat service!
+<br>
+<br>
 ![Final product!](/img/final.PNG)
