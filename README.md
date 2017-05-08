@@ -1,5 +1,18 @@
 # linode-workshop
 
+## Setup Linode Account
+1. Go to link [https://manager.linode.com](https://manager.linode.com/)
+2. Click Sign up and create an account
+3. Click on "OK! Let's complete my sign up"
+4. Enter your information: choose pre-load $5, enter a credit card, but this will be a free trial (you can cancel it within 7 days)
+* We will send out a reminder to unsubscribe from Linode so that you won't be charged
+
+## Setup Root Server
+
+
+
+
+
 # SSH Into Account
 
 ssh root@<your IP address> 
