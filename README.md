@@ -4,14 +4,14 @@ Be sure to look out for the following notations:
 * :computer: run in terminal
 * :rocket: this is a key step
 
-## Setup Linode Account
+## :rocket: Setup Linode Account 
 1. Go to link [https://manager.linode.com](https://manager.linode.com/)
 2. Click Sign up and create an account
 3. Click on "OK! Let's complete my sign up"
 4. Enter your information: choose pre-load $5, enter a credit card, but this will be a free trial (you can cancel it within 7 days)
 * We will send out a reminder to unsubscribe from Linode so that you won't be charged
 
-## Setup Root Server
+## :rocket: Setup Root Server
 1. When logged into your account, click on the 1st "Linode 1024" standard instances
 ![Linode 1024](/img/2.png)
 2. Scroll down and change your location into "Newark, NJ", then click "Add this Linode"
@@ -29,7 +29,7 @@ Be sure to look out for the following notations:
 8. Copy the whole <code>ssh root@YOUR_IP_ADDRESS</code> line in the SSH access section
 
 
-## SSH Into Account
+## :rocket: SSH Into Account
 
 ```
 ssh root@<your IP address> 
@@ -169,7 +169,7 @@ The html can be found at
 #### Prerequisites
 This tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deployment Disk Size and a 256 MB Swap Disk
 
-#### Step 1: Install Node.js
+#### :rocket: Step 1: Install Node.js
 
 :computer: First things first, let's update `apt-get`. Copy and paste this into your terminal:
 
@@ -202,7 +202,7 @@ sudo apt-get install nodejs
 sudo apt-get install build-essential
 ```
 
-#### Step 2: Set up nginx (pronounced engine-x)
+#### :rocket: Step 2: Set up nginx (pronounced engine-x)
 
 
 :computer: Let's start out by downloading nginx from `apt-get`:
@@ -248,7 +248,7 @@ server {
 sudo service nginx restart
 ```
 
-#### Step 3: Node!
+#### :rocket: Step 3: Node!
 
 This couldn't be easier.
 
