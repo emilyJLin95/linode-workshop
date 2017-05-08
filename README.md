@@ -167,7 +167,9 @@ The html can be found at
 
 ## Setup Nginx & Node
 #### Prerequisites
-This tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deployment Disk Size and a 256 MB Swap Disk
+This part of the tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deployment Disk Size and a 256 MB Swap Disk. Not sure what OS is on your VM? Run `lsb_release -a` to find out!
+
+![VM version](/img/version.PNG)
 
 #### :rocket: Step 1: Install Node.js
 
@@ -184,7 +186,7 @@ cd ~
 curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
 ```
 
-:computer: This may bring up a prompt about installing large files, if so just enter "Y" and press enter. Once the download is complete, you can `ls` to see your current directory and in it should be a file named `nodesource_setup.sh`. Let's run that so we can install node:
+:computer: Once the download is complete, you can `ls` to see your current directory and in it should be a file named `nodesource_setup.sh`. Let's run that so we can install node:
 
 ```bash
 sudo bash nodesource_setup.sh
@@ -196,7 +198,7 @@ sudo bash nodesource_setup.sh
 sudo apt-get install nodejs
 ```
 
-:computer: We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get:
+:computer: We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get. This may bring up a prompt about installing large files, if so just enter "Y" and press enter.
 
 ```bash
 sudo apt-get install build-essential
@@ -252,13 +254,13 @@ sudo service nginx restart
 
 This couldn't be easier.
 
-:computer: We need to install git and GNU Screen - you should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
+:computer: We need to install git and GNU Screen. You should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
 
 ```bash
 apt install git
 sudo apt-get install screen
 ```
-:computer: Then we clone the repo
+:computer: Then we clone the repo (this repo is an example app from our good friends at [Socket.IO!](https://github.com/socketio/socket.io/tree/master/examples/chat))
 
 ```bash
 git clone https://github.com/tburnam/cs52WorkshopSocketExample.git
@@ -272,4 +274,5 @@ screen
 npm start
 ```
 
-If you now navigate to your Linode instance's IP address, you should see your Node app being hosted!
+If you now navigate to your Linode instance's IP address, you should see your Node app being hosted! Share your link with friends and now you have a chat service!
+![Final product!](/img/final.PNG)
