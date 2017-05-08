@@ -228,23 +228,7 @@ sudo vi /etc/nginx/sites-available/default
 ```
 
 :computer: Using your vim skills from earlier, go ahead and insert this and save it!
-
-``` bash
-server {
-    listen 80;
- 
-    server_name meantodo.com;
- 
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
+![vim config](/img/vimconfigFile.png)
 
 :computer: Once you save this config file, let's go ahead and restart nginx, loading in the new config file:
 
