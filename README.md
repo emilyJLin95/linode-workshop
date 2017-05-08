@@ -1,5 +1,9 @@
 # linode-workshop
 
+Be sure to look out for the following notations:
+* :computer: run in terminal
+* :rocket: this is a key step
+
 ## Setup Linode Account
 1. Go to link [https://manager.linode.com](https://manager.linode.com/)
 2. Click Sign up and create an account
@@ -167,32 +171,32 @@ This tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deplo
 
 #### Step 1: Install Node.js
 
-First things first, let's update `apt-get`. Copy and paste this into your terminal:
+:computer: First things first, let's update `apt-get`. Copy and paste this into your terminal:
 
 ```bash
 sudo apt-get update
 ```
 
-Next, let's get the source setup for Node.js. Copy and paste this into your terminal.
+:computer: Next, let's get the source setup for Node.js. Copy and paste this into your terminal.
 
 ```bash
 cd ~
 curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
 ```
 
-This may bring up a prompt about installing large files, if so just enter "Y" and press enter. Once the download is complete, you can `ls` to see your current directory and in it should be a file named `nodesource_setup.sh`. Let's run that so we can install node:
+:computer: This may bring up a prompt about installing large files, if so just enter "Y" and press enter. Once the download is complete, you can `ls` to see your current directory and in it should be a file named `nodesource_setup.sh`. Let's run that so we can install node:
 
 ```bash
 sudo bash nodesource_setup.sh
 ```
 
-Now we are ready to install the official NodeJS package, paste this into your terminal:
+:computer: Now we are ready to install the official NodeJS package, paste this into your terminal:
 
 ```bash
 sudo apt-get install nodejs
 ```
 
-We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get:
+:computer: We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get:
 
 ```bash
 sudo apt-get install build-essential
@@ -201,25 +205,25 @@ sudo apt-get install build-essential
 #### Step 2: Set up nginx (pronounced engine-x)
 
 
-Let's start out by downloading nginx from `apt-get`:
+:computer: Let's start out by downloading nginx from `apt-get`:
 
 ```bash
 sudo apt-get install nginx
 ```
 
-Now we need to modify the default config file. Let's go ahead and get rid of the default one and replace it with our own:
+:computer: Now we need to modify the default config file. Let's go ahead and get rid of the default one and replace it with our own:
 
 ```bash
 sudo rm /etc/nginx/sites-available/default
 ```
 
-then:
+:computer: then:
 
 ```bash
 sudo vi /etc/nginx/sites-available/default
 ```
 
-If you don't know vim, you should probably Google it. However you do it, this needs to go in the file:
+:computer: Using your vim skills from earlier, go ahead and insert this and save it!
 
 ``` bash
 server {
@@ -238,7 +242,7 @@ server {
 }
 ```
 
-Once you save this config file, let's go ahead and restart nginx, loading in the new config file:
+:computer: Once you save this config file, let's go ahead and restart nginx, loading in the new config file:
 
 ```
 sudo service nginx restart
@@ -248,19 +252,19 @@ sudo service nginx restart
 
 This couldn't be easier.
 
-We need to install git and GNU Screen - you should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
+:computer: We need to install git and GNU Screen - you should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
 
 ```bash
 apt install git
 sudo apt-get install screen
 ```
-Then we clone the repo
+:computer: Then we clone the repo
 
 ```bash
 git clone https://github.com/tburnam/cs52WorkshopSocketExample.git
 ```
 
-Then
+:computer: Then
 
 ```bash
 cd cs52WorkshopSocketExample/
