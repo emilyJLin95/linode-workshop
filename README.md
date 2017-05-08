@@ -181,13 +181,7 @@ This part of the tutorial is for a Linode instance running Ubuntu 16.04 LTS with
 
 #### :rocket: Step 1: Install Node.js
 
-:computer: First things first, let's update `apt-get`. Copy and paste this into your terminal:
-
-```bash
-sudo apt-get update
-```
-
-:computer: Next, let's get the source setup for Node.js. Copy and paste this into your terminal.
+:computer: First things first, let's get the source setup for Node.js. Copy and paste this into your terminal.
 
 ```bash
 cd ~
