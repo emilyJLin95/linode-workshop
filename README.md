@@ -154,3 +154,112 @@ Go back into terminal and mess with the html
 The html can be found at 
 <code>/var/www/html/index.nginx-debain.html</code>
 
+
+## Setup Nginx & Node
+#### Prerequisites
+This tutorial is for a Linode instance running Ubuntu 16.04 LTS with 20224 Deployment Disk Size and a 256 MB Swap Disk
+
+#### Step 1: Install Node.js
+
+First things first, let's update `apt-get`. Copy and paste this into your terminal:
+
+```bash
+sudo apt-get update
+```
+
+Next, let's get the source setup for Node.js. Copy and paste this into your terminal.
+
+```bash
+cd ~
+curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+```
+
+This may bring up a prompt about installing large files, if so just enter "Y" and press enter. Once the download is complete, you can `ls` to see your current directory and in it should be a file named `nodesource_setup.sh`. Let's run that so we can install node:
+
+```bash
+sudo bash nodesource_setup.sh
+```
+
+Now we are ready to install the official NodeJS package, paste this into your terminal:
+
+```bash
+sudo apt-get install nodejs
+```
+
+We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get:
+
+```bash
+sudo apt-get install build-essential
+```
+
+#### Step 2: Set up nginx (pronounced engine-x)
+
+
+Let's start out by downloading nginx from `apt-get`:
+
+```bash
+sudo apt-get install nginx
+```
+
+Now we need to modify the default config file. Let's go ahead and get rid of the default one and replace it with our own:
+
+```bash
+sudo rm /etc/nginx/sites-available/default
+```
+
+then:
+
+```bash
+sudo vi /etc/nginx/sites-available/default
+```
+
+If you don't know vim, you should probably Google it. However you do it, this needs to go in the file:
+
+``` bash
+server {
+    listen 80;
+ 
+    server_name meantodo.com;
+ 
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+Once you save this config file, let's go ahead and restart nginx, loading in the new config file:
+
+```
+sudo service nginx restart
+```
+
+#### Step 3: Node!
+
+This couldn't be easier.
+
+We need to install git and GNU Screen - you should know what git does. Screen allows us to have persistent terminal sessions. You call this so your server doesn't depend on your SSH session (like it dies when you close terminal).
+
+```bash
+apt install git
+sudo apt-get install screen
+```
+Then we clone the repo
+
+```bash
+git clone https://github.com/tburnam/cs52WorkshopSocketExample.git
+```
+
+Then
+
+```bash
+cd cs52WorkshopSocketExample/
+screen
+npm start
+```
+
+If you now navigate to your Linode instance's IP address, you should see your Node app being hosted!
