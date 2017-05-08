@@ -96,7 +96,7 @@ We’re going to use vim. It’s supremely better than emacs. Let’s find the #
 
 - Arrow-key down to `PermitRootLogin` and let’s change the `yes` to `no`. Wait, how do you modify text!? Type `i` to go into `INSERT` mode. Now you can edit text. Go ahead and delete `yes` and replace it with `no`. 
 
-- Once you’re done, save it and lets move on! Don’t know how to save?? Find out [here](https://www.google.com/search?q=how+do+I+save+things+in+vim%3F!%3F&oq=how+do+I+save+things+in+vim%3F!%3F&aqs=chrome..69i57.4592j0j1&sourceid=chrome&ie=UTF-8)
+- Once you’re done, save it and lets move on! Don’t know how to save?? Press the ESC key then type `:x` to save and close the file.
 
 
 Now that root login is disabled and you're back on the command line hit "control" + "d" to get yourself out of the ssh.
@@ -200,7 +200,7 @@ sudo bash nodesource_setup.sh
 sudo apt-get install nodejs
 ```
 
-:computer: We will also need to support building certain nom packages, so let's go ahead and install the `build-essential` package using apt-get. This may bring up a prompt about installing large files, if so just enter "Y" and press enter.
+:computer: We will also need to support building certain npm packages, so let's go ahead and install the `build-essential` package using apt-get. This may bring up a prompt about installing large files, if so just enter "Y" and press enter.
 
 ```bash
 sudo apt-get install build-essential
@@ -222,7 +222,23 @@ sudo vi /etc/nginx/sites-available/default
 ```
 
 :computer: Using your vim skills from earlier, go ahead and insert this and save it!
-![vim config](/img/vimconfigFile.png)
+
+```
+server {
+        listen 80;
+
+        server_name cs52workshop.com;
+
+
+        location / {
+                proxy_pass http://127.0.0.1:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+```
 
 :computer: Once you save this config file, let's go ahead and restart nginx, loading in the new config file:
 
