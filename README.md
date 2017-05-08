@@ -12,20 +12,27 @@ Be sure to look out for the following notations:
 * We will send out a reminder to unsubscribe from Linode so that you won't be charged
 
 ## :rocket: Setup Root Server
-1. When logged into your account, click on the 1st "Linode 1024" standard instances
+1. When logged into your account, click on the 1st "Linode 1024" standard instances. This is just defining the amount of memory and CPU you want for your virtual machine.
 ![Linode 1024](/img/2.png)
-2. Scroll down and change your location into "Newark, NJ", then click "Add this Linode"
+
+2. Scroll down and change your location into "Newark, NJ", then click "Add this Linode." You can realistically choose any location that you want. Newark is the closest location to us, so when we connect to the our virtual machine we will get the fastest connection.
 ![Add this Linode](/img/3.png)
+
 3. Click on the Linode that is "being created" in the status column, like in this example click <b>linode3082692</b>
 ![Add this Linode](/img/4.png)
+
 4. You will arrive at this page
 ![Add this Linode](/img/5.png)
-5. Choose "Rebuild" above. This takes us to the page where we select our “Image“, which is our OS. For this workshop, we’ll use the Debian-based Ubuntu OS. Go ahead and choose “Ubuntu 16.04 LTS" under Image section, then hit "Rebuild”. 
+
+5. Choose "Rebuild" above. This takes us to the page where we select our “Image“, which is our OS. For this workshop, we’ll use the Debian-based Ubuntu OS. Go ahead and choose “Ubuntu 16.04 LTS" under Image section, enter your password to access your server, then hit "Rebuild”. Deployment Disk Space is how much memory we want to give our virtual machine. Swap disk is something that old computers used when they ran out of RAM. When a computer runs out of RAM, it starts to store the most unused parts of the RAM into the hard-drive and treats this information stored in the hard-drive as RAM. However, with the insane size of RAM these days, swap disk really isn't used. 
 ![Add this Linode](/img/6.png)
+
 6. You will see this page. Navigate to the `Boot` button to initiate the boot process. You should see your `Server Status` change from `Powered off` to `Running` once the boot process is complete. 
 ![Add this Linode](/img/7.png)
+
 7. Choose "Remote Access" in the selection bar above, and you will see this page
 ![Add this Linode](/img/8.png)
+
 8. Copy the whole <code>ssh root@YOUR_IP_ADDRESS</code> line in the SSH access section
 
 
@@ -39,39 +46,40 @@ First we need to add a user.
 It will ask you to enter a password and ask for some basic user information.
 You can just use the default values for the user information.
 
-screenshot of the user creation part
 ![Add this Linode](/img/user.png)
 
 ```
 adduser <username> 
 ```
 
-To make sure that our user has been created correclty lets switch into that account. su stands for "switch user"
+To make sure that our user has been created correctly, let's switch into that account. "su" stands for "switch user"
 
 ```
 su <username> 
 ```
 
-Try running the 
+Try running the list command.
 ```
 ls 
 ```
 
-command.
-
+Permission should be denied. 
 Our user can't really do anything because he doesn't have any permissions. Lets fix that.
 
 We need to make our user a super user. A super user has many of the same priviledges as the root. Lets switch back to root to do this.
 
 ```
 su root
+
+*enter your password*
+
 usermod -aG sudo <username> 
 ```
 
 Alright, now that our user has super user priviledges lets disable people from logging into root.
-Why? Security reasons
+Why? Security reasons.
 
-A super user can basically do the same thing the root can do.
+A super user can basically do the same thing the root can do. However, when a super user tries to access/modify system files it must do so using the "sudo" command which stands for "super user do."
 
 However, when it comes to attacks, it is easy for attackers to try and login and gain root access because they know the username of root. Its root.
 Furthermore, super users have a greater amount of activity logging than root does. So if someone messes something up on the server using a sudo command, we know. 
@@ -80,7 +88,6 @@ Furthermore, super users have a greater amount of activity logging than root doe
 vi /etc/ssh/sshd_config
 ```
 
-scrrenshot of the file
 ![Add this Linode](/img/config1.png)
 
 We’re going to use vim. It’s supremely better than emacs. Let’s find the #Authentication section, to do this:
@@ -119,7 +126,6 @@ We're going to be using the apt package manager for this. apt is a package manag
 sudo apt-get update
 sudo apt-get install nginx
 ```
-screenshots of the commmands being run
 ![Add this Linode](/img/install.PNG)
 
 Ngninx comes with a firewall. We need to reconfigure this to allow us to handle requests. 
@@ -131,19 +137,19 @@ Lets list all the possible applications our firewall can work with
 sudo ufw app list
 ```
 
-screen shot of this command being run
 ![Add this Linode](/img/firewall.PNG)
 
 Nginx Full: allows normal unencrypted web traffic and encrypted traffic
+
 Nginx HTTP: Allows only normal unencrypted web traffic
+
 Nginx HTTPS: Allows only encrypted web traffic
 
-So lets only allow normal web traffic
+So let's only allow normal web traffic
 
 ```
 sudo ufw allow 'Nginx HTTP'
 ```
-screenhot of command output
 ![Add this Linode](/img/sfw.PNG)
 
 Nginx starts itself after its installed. So it should be running already.
@@ -154,7 +160,6 @@ We can double check
 systemctl status nginx
 ```
 
-scrren shot of this command output
 ![Add this Linode](/img/system.PNG)
 
 Sweet.
